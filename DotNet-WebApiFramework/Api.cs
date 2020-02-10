@@ -51,7 +51,7 @@ namespace DotNet_WebApiFramework
 
 		//This will call a post To the URL with the object converted to a json
 		//returns the HTTP responce for parsing
-		public async Task<HttpResponseMessage> ApiPostAsync(String Url, Object Obj_In)
+		public async Task<HttpResponseMessage> ApiPostAsync(string Url, Object Obj_In)
 		{
 			HttpResponseMessage response = await client.PostAsJsonAsync(
 				Url, Obj_In);
@@ -62,7 +62,7 @@ namespace DotNet_WebApiFramework
 		//This will call a post To the URL with the object converted to a json
 		//This function will parse the token into the params
 		//returns a true or false depending on the result
-		public async Task<bool> ApiPostAsync_Token(String Url, Object Obj_In)
+		public async Task<bool> ApiPostAsync_Token(string Url, Object Obj_In)
 		{
 			HttpResponseMessage response = await client.PostAsJsonAsync(
 				(Url + "?token=" + ApiToken), Obj_In);
@@ -82,7 +82,7 @@ namespace DotNet_WebApiFramework
 
 		//This will call a post To the URL with the object converted to a json
 		//returns a true or false depending on the result
-		public async Task<bool> ApiPostAsync_WOToken(String Url, Object Obj_In)
+		public async Task<bool> ApiPostAsync_WOToken(string Url, Object Obj_In)
 		{
 			HttpResponseMessage response = await client.PostAsJsonAsync(
 				(Url), Obj_In);
@@ -102,10 +102,10 @@ namespace DotNet_WebApiFramework
 
 		//This will call a post To the URL with the object converted to a json
 		//returns the ERROR Struct responce
-		public async Task<Error> ApiGet(String Url)
+		public async Task<Error> ApiGet(string url)
 		{
 			Error result = new Error();
-			HttpResponseMessage response = await client.GetAsync(Url + "?token=" + ApiToken);
+			HttpResponseMessage response = await client.GetAsync(url + "?token=" + ApiToken);
 			if (response.IsSuccessStatusCode)
 			{
 				result = await response.Content.ReadAsAsync<Error>();
@@ -113,7 +113,7 @@ namespace DotNet_WebApiFramework
 			return result;
 		}
 
-		public async Task<HttpResponseMessage> CallGetWobj(String Url)
+		public async Task<HttpResponseMessage> CallGetWobj(string Url)
 		{
 			HttpResponseMessage response = await client.GetAsync(Url + "?token=" + ApiToken);
 			response.EnsureSuccessStatusCode();
@@ -140,7 +140,7 @@ namespace DotNet_WebApiFramework
 			}
 			catch (Exception e)
 			{//CreateAccount was unsucessfull
-				Console.WriteLine("Creating New account was Unsucessfull With Error" + e.ToString());
+				Console.WriteLine("Creating New account was Unsucessfull With Error");
 				return false;
 			}
 			//user account has been created Lets Login to get the APiToken
@@ -201,7 +201,7 @@ namespace DotNet_WebApiFramework
 			Error Result = new Error();
 			try
 			{
-				Result = await ApiGet("api/v1/Auth/TestToken");
+				Result = await ApiGet(("api/v1/Auth/TestToken"));
 			}
 			catch (Exception e)
 			{

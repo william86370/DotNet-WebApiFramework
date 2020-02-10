@@ -8,17 +8,17 @@ namespace DotNet_WebApiFramework
 		private static async Task Main(string[] args)
 		{
 			//Create the API Call with the base server
-			Api WebApi = new Api("http://localhost:3000/");
+			Api WebApi = new Api("http://104.46.123.34:3000/");
 
 			//Create the test Strucutre
 			NewUser TestUser = new NewUser
 			{
-				username = "testnewhusger45",
-				password = "testnewhusger45",
-				email = "testnewugsehr45"
+				username = "testneopwphusger45",
+				password = "testneipwphusger45",
+				email = "testnewpoupgsehr45"
 			};
-
-			//NEWACCOUNT TEST
+			
+		//	/NEWACCOUNT TEST
 			//NOTE Can only be created once
 
 			//call the create user
@@ -31,7 +31,7 @@ namespace DotNet_WebApiFramework
 					Console.WriteLine("\nToken Works");
 					//Get the first set of login values
 					AccountData CurrentUser2 = WebApi.CurrentLogin();
-					//print the first values of the flogin options
+////print the first values of the flogin options
 					Console.WriteLine("\nLets Print Everything\nUsername: " + CurrentUser2.username + "\nPassword: " + CurrentUser2.password + "\nApiToken: " + CurrentUser2.oauth2.token + "\nUDID: " + CurrentUser2.oauth2.udid);
 				}
 			}
@@ -39,7 +39,8 @@ namespace DotNet_WebApiFramework
 			{
 				Console.WriteLine("\nCouldnt Create a new Account");
 			}
-
+			
+			
 			//LOGIN TEST
 
 			//lets Get a New Login Token and pritnt the Token
@@ -54,7 +55,7 @@ namespace DotNet_WebApiFramework
 					Console.WriteLine("\nPrinting Login Results\nUsername: " + CurrentUser.username + "\nPassword: " + CurrentUser.password + "\nApiToken: " + CurrentUser.oauth2.token + "\nUDID: " + CurrentUser.oauth2.udid);
 				}
 			}
-
+			
 			//PROFILE UPDATE TEST
 
 			//Create the users profile
@@ -85,6 +86,10 @@ namespace DotNet_WebApiFramework
 				//profile wasnt updated on the server
 			}
 
+			Console.ReadLine();
+
+
+		}
+		
 		}
 	}
-}
